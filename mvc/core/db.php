@@ -1,12 +1,19 @@
-<?php 
+<?php
 
     function dbInstance(){
         static $db ;
         
         if($db === null){
-            $db = new PDO('mysql:host=localhost;dbname=civilprojectdb;', 'root', '', [
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-            ]);
+            $config = require dirname(__DIR__).'/../config.php';
+
+            $db = new PDO(
+                'mysql:host=' . $config['db_host'] . ';dbname=' . $config['db_name'],
+                $config['db_user'],
+                $config['db_pass'],
+                [
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
+            );
             $db->exec('SET NAMES UTF8');
         }
 
