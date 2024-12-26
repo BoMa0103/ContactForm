@@ -28,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "<unknown>",
     "last_opened_file_path": "D:/ContactForm",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,6 +56,7 @@
       <updated>1735237006861</updated>
       <workItem from="1735237008033" duration="619000" />
       <workItem from="1735237994295" duration="310000" />
+      <workItem from="1735238330959" duration="305000" />
     </task>
     <servers />
   </component>
