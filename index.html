@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <!--========= Required meta tags =========-->
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Psycho Aid Help - Site</title>
+    <title>Tell us your history</title>
 
     <!--====== Favicon ======-->
     <link rel="shortcut icon" href="resources/static/images/Logo.png" type="images/x-icon"/>
@@ -193,12 +193,6 @@
     <div id="messages" class="messages">
         <!-- Повідомлення відображатимуться тут -->
     </div>
-    <div class="input-area">
-        <form id="messageForm">
-            <input type="text" id="messageInput" placeholder="Напишіть повідомлення..." required>
-            <button type="submit">Надіслати</button>
-        </form>
-    </div>
 </div>
 
 <!--========= ALL JS FORM ../assets/js Here =========-->
@@ -292,5 +286,32 @@
     });
 
 </script>
+
+<style>
+    #messages {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+
+    .message {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    .message strong {
+        font-size: 16px;
+    }
+
+    .message p {
+        margin: 5px 0 0;
+        color: #555;
+    }
+</style>
 
 </html>
