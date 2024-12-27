@@ -41,6 +41,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ContactForm\resources\static\images" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -60,7 +65,7 @@
       <workItem from="1735237008033" duration="619000" />
       <workItem from="1735237994295" duration="310000" />
       <workItem from="1735238330959" duration="305000" />
-      <workItem from="1735239173241" duration="14399000" />
+      <workItem from="1735239173241" duration="16750000" />
     </task>
     <servers />
   </component>

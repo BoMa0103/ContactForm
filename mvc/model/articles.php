@@ -4,7 +4,7 @@
     define("TABLE_NAME", 'articles');
 
     function getArticles() : array {
-        $sql = "SELECT * FROM " . TABLE_NAME;
+        $sql = "SELECT * FROM " . TABLE_NAME . " ORDER BY id DESC";
         $query = dbQuery($sql);
         return $query->fetchAll();
     }

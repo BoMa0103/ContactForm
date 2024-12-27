@@ -12,7 +12,7 @@
     <title>Tell us your history</title>
 
     <!--====== Favicon ======-->
-    <link rel="shortcut icon" href="resources/static/images/Logo.png" type="images/x-icon"/>
+    <link rel="shortcut icon" href="resources/static/images/logo.png" type="images/x-icon"/>
 
     <!--====== CSS Here ======-->
     <link rel="stylesheet" href="resources/static/assets/css/bootstrap.min.css">
@@ -189,10 +189,11 @@
 
 </div>
 
-<div class="chat-container">
-    <div id="messages" class="messages">
-        <!-- Повідомлення відображатимуться тут -->
+<div class="chat-container container my-4">
+    <div id="messages" class="messages mb-3">
+        <!-- Articles list -->
     </div>
+
 </div>
 
 <!--========= ALL JS FORM ../assets/js Here =========-->
@@ -216,45 +217,46 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function () {
-        const messagesContainer = document.getElementById('messages');
-        const messageForm = document.getElementById('messageForm');
-        const messageInput = document.getElementById('messageInput');
-
         function loadMessages() {
             $.ajax({
                 url: 'mvc/controllers/getArticles.php',
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data); // Перевіряємо отримані дані
 
-                    // Очищуємо контейнер для нових записів
                     const messagesContainer = document.getElementById('messages');
                     messagesContainer.innerHTML = '';
 
-                    // Проходимо по кожному запису
+                    if (data.length === 0) {
+                        messagesContainer.innerHTML = '<p class="error">Немає повідомлень.</p>';
+                        return;
+                    }
+
                     data.forEach(function(item) {
-                        // Створюємо блок для одного повідомлення
                         const messageDiv = document.createElement('div');
                         messageDiv.classList.add('message');
 
-                        // Формуємо текст повідомлення
                         messageDiv.innerHTML = `
-            <strong>${item.name} ${item.surname}</strong> (${item.age} років)
-            <br>
+    <div class="message mb-3 p-3 border">
+        <div class="d-flex justify-content-between">
+            <strong>${item.name} ${item.surname} ${item.patronymic}</strong> <span class="text-muted">(${item.age} років)</span>
+        </div>
+        <div class="text-muted">
             <em>Email:</em> ${item.email} | <em>Телефон:</em> ${item.phone}
-            <p>${item.history || 'Історія не вказана'}</p>
-        `;
-
-                        // Додаємо запис у контейнер
+        </div>
+         <div class="mt-2" style="word-break: break-word;">
+            <p class="mb-0">${item.history ? item.history : 'Історія не вказана'}</p>
+        </div>
+    </div>
+`;
                         messagesContainer.appendChild(messageDiv);
                     });
 
-                    // Прокручуємо контейнер вниз
                     messagesContainer.scrollTop = messagesContainer.scrollHeight;
                 },
                 error: function (xhr, status, error) {
                     console.error('Get articles error:', error);
+                    document.getElementById('messages').innerHTML = '<p class="error">Сталася помилка при завантаженні повідомлень.</p>';
                 }
             });
         }
@@ -278,40 +280,10 @@
             });
         });
 
-        // Автоматичне оновлення повідомлень кожні 2 секунди
-        setInterval(loadMessages, 2000);
+        // setInterval(loadMessages, 2000);
 
-        // Завантаження повідомлень під час завантаження сторінки
         loadMessages();
     });
 
 </script>
-
-<style>
-    #messages {
-        max-height: 400px;
-        overflow-y: auto;
-        padding: 10px;
-        border: 1px solid #ddd;
-        background-color: #f9f9f9;
-    }
-
-    .message {
-        margin-bottom: 15px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #fff;
-    }
-
-    .message strong {
-        font-size: 16px;
-    }
-
-    .message p {
-        margin: 5px 0 0;
-        color: #555;
-    }
-</style>
-
 </html>

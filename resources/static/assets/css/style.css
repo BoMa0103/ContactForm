@@ -4650,6 +4650,12 @@ img {
 	transition: all 0.3s;
 }
 
+.history-text {
+	word-wrap: break-word !important;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
 .singel-gallery-item:hover .content {
 	bottom: 50px;
 	visibility: visible;
